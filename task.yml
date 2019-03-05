@@ -1,0 +1,15 @@
+- name: ec2 launcher
+  hosts: localhost
+  connection: local
+  tasks:
+  - name: launching ec2
+    ec2:
+      instance_type: t2.micro
+      key_name: webserver
+      image:  ami-011b3ccf1bd6db744
+      region: us-east-1
+      group: default
+      count: 2
+      vpc_subnet_id: subnet-0cfd626b
+      wait: yes
+      assign_public_ip: yes

@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    region: 'us-east-1'
+  tasks:
+    - name: Terminate Existing instances using Instance ID's
+      ec2:
+        region: "{{ region }}"
+        wait: true
+        instance_ids:
+          - 'i-02b648829cf625660'
+          - 'i-02d740c3e223631ae'
+          - 'i-0ded14ca95fc9c993'
+        state: 'absent'
